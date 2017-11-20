@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.6/proj4.js"></script>
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/us-ca-all.js"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="container"></div>
+<script type="text/javascript" > 
+// Prepare demo data
+// Data is joined to map using value of 'hc-key' property by default.
+// See API docs for 'joinBy' for more info on linking data and map.
+// Initiate the chart
+//var chartingOptions = 'container';
+//console.log("JSON: " + JSON.stringify(chartingOptions));
+ //       console.log("Render to element with ID : " + chartingOptions.chart.renderTo);
+  //      console.log("Number of matching dom elements : " + $("#" + chartingOptions.chart.renderTo).length);
+Highcharts.mapChart('container', {
+
+    title: {
+        text: 'Highmaps basic lat/lon demo'
+    },
+
+    mapNavigation: {
+        enabled: true
+    },
+
+    tooltip: {
+        headerFormat: '',
+        pointFormat: '<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}'
+    },
+
+    series: [{
+        // Use the gb-all map with no data as a basemap
+        mapData: Highcharts.maps['countries/us/us-ca-all'],
+        name: 'Basemap',
+        borderColor: '#A0A0A0',
+        nullColor: 'rgba(200, 200, 200, 0.3)',
+        showInLegend: false
+    }, {
+        name: 'Separators',
+        type: 'mapline',
+        data: Highcharts.geojson(Highcharts.maps['countries/us/us-ca-all'], 'mapline'),
+        color: '#707070',
+        showInLegend: false,
+        enableMouseTracking: false
+    }, {
+        // Specify points using lat/lon
+        type: 'mappoint',
+        name: 'Reservoirs',
+        color: Highcharts.getOptions().colors[1],
+        data: [{
+            name: 'Shastha Reservoir',
+            lat: 40.7184828,
+            lon: -122.4188998,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Lake Oroville',
+            lat: 39.5371085,
+            lon: -121.4833014,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Folsom Lake',
+            lat: 38.7074027,
+            lon: -121.1560578,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Trinity Lake',
+            lat: 37.6702123,
+            lon: -119.107916,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'New Melones',
+            lat: 37.9471474,
+            lon: -120.5279769,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Don Pedro Reservoir',
+            lat: 37.7010423,
+            lon: -120.419917,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'San Luis Reservoir',
+            lat: 37.0679995,
+            lon: -121.0815893,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Millerton Lake',
+            lat: 37.0007829,
+            lon: -119.7048672,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Perris Lake',
+            lat: 33.7725196,
+            lon: -117.2328145,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, {
+            name: 'Castaic Lake',
+            lat: 34.519992,
+            lon: -118.6064762,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }, 
+        {
+            name: 'Pine Flat Reservoir',
+            lat: 36.8324489,
+            lon: -119.3259565,
+            dataLabels: {
+                align: 'left',
+                x: 5,
+                verticalAlign: 'middle'
+            }
+        }]
+    }]
+});
+
+
+</script>
+</body>
+</html>
